@@ -25,6 +25,7 @@ format:
     link-external-newwindow: true
     code-overflow: scroll
     favicon: favicon.ico
+    server: shiny
     
 editor: visual
 
@@ -164,7 +165,7 @@ ipak <- function(pkg){
   )
 }
 
-packages <- c("tidyverse","kableExtra","ggplot2","readxl")
+packages <- c("tidyverse","kableExtra","ggplot2","readxl", "plotly")
 
 ipak(packages)
 ```
@@ -334,6 +335,46 @@ ggplot(data.frame(x = rango), aes(x = x)) +  # Curva de la distribución normal
 
 La probabilidad de que un ratón viva entre 37 y 49 meses es 60.65%.
 :::
+
+**Gráfica Interactiva — Distribución Normal Continua**
+
+```{r}
+# Librerías
+library(plotly)
+
+# Datos de la distribución normal
+x <- seq(-4, 4, length.out = 1000)
+y <- dnorm(x, mean = 0, sd = 1)
+
+# Gráfica interactiva
+plot_ly(
+  x = x,
+  y = y,
+  type = "scatter",
+  mode = "lines",
+  hoverinfo = "x+y"
+) %>%
+layout(
+  title = list(
+    text = "Distribución Normal Estándar",
+    font = list(size = 24)
+  ),
+  
+  xaxis = list(
+    title = "Valores de x",
+    zeroline = TRUE
+  ),
+  
+  yaxis = list(
+    title = "Densidad de Probabilidad",
+    zeroline = FALSE
+  ),
+  
+  hovermode = "closest",
+  
+  showlegend = FALSE
+)
+```
 
 **2.** Una máquina expendedora de bebidas gaseosas se regula para que sirva un promedio de 200 mililitros por vaso. Si la cantidad de bebida se distribuye normalmente con una desviación estándar igual a 15 mililitros,
 
@@ -1360,7 +1401,6 @@ ggplot(df_medias, aes(x = media)) +
   theme_minimal()
 ```
 
-
 ## D. DE POISSON ORIGINAL
 
 Distribución de Poisson Original
@@ -1391,7 +1431,6 @@ ggplot(df_sample_means, aes(x = mean)) +
   labs(  title = "Distribución de las Medias Muestrales",  x = "Sample Mean", y = "Density" ) +
   theme_minimal()
 ```
-
 
 ## D. HIPERGEOMETRICA ORIGINAL
 
@@ -1426,5 +1465,4 @@ ggplot(df_medias, aes(x = media)) +
   labs(  title = "Distribución de las Medias Muestrales",   x = "Media de la Muestra",  y = "Densidad"  ) +
   theme_minimal()
 ```
-
 :::
