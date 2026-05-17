@@ -2,7 +2,7 @@
 title: "MODELOS CONTINUOS"
 subtitle: "TALLER 2"
 author: 
-  - name: Daniela Monje Bonilla <br> Paula Dayana Matta Ramos
+  - name: Daniela Monje Bonilla <br> Paula Dayana Matta Ramos <br> Juan Andrés Plazas Gónzales
     affiliation: "Universidad del Tolima"
     affiliation-url: "https://www.ut.edu.co/"
 date: today
@@ -336,45 +336,7 @@ ggplot(data.frame(x = rango), aes(x = x)) +  # Curva de la distribución normal
 La probabilidad de que un ratón viva entre 37 y 49 meses es 60.65%.
 :::
 
-**Gráfica Interactiva — Distribución Normal Continua**
 
-```{r}
-# Librerías
-library(plotly)
-
-# Datos de la distribución normal
-x <- seq(-4, 4, length.out = 1000)
-y <- dnorm(x, mean = 0, sd = 1)
-
-# Gráfica interactiva
-plot_ly(
-  x = x,
-  y = y,
-  type = "scatter",
-  mode = "lines",
-  hoverinfo = "x+y"
-) %>%
-layout(
-  title = list(
-    text = "Distribución Normal Estándar",
-    font = list(size = 24)
-  ),
-  
-  xaxis = list(
-    title = "Valores de x",
-    zeroline = TRUE
-  ),
-  
-  yaxis = list(
-    title = "Densidad de Probabilidad",
-    zeroline = FALSE
-  ),
-  
-  hovermode = "closest",
-  
-  showlegend = FALSE
-)
-```
 
 **2.** Una máquina expendedora de bebidas gaseosas se regula para que sirva un promedio de 200 mililitros por vaso. Si la cantidad de bebida se distribuye normalmente con una desviación estándar igual a 15 mililitros,
 
@@ -756,6 +718,46 @@ ggplot(data.frame(x = rango), aes(x = x)) +
 ```
 :::
 
+**Gráfica interactiva**
+```{r}
+library(plotly)
+
+#| warning: false
+#| message: false
+
+x <- seq(-10, 10, length.out = 1000)
+
+y <- dnorm(x, mean = 0, sd = 1)
+
+plot_ly() %>%
+  add_lines(
+    x = x,
+    y = y,
+    
+    line = list(
+      color = "deepskyblue",
+      width = 4
+    ),
+    
+    name = "Normal"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Distribución Normal",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_dark",
+    
+    xaxis = list(title = "x"),
+    
+    yaxis = list(title = "Densidad")
+  )
+```
+
+
 # . DISTRIBUCIÓN JI - CUADRADO
 
 La distribución ji-cuadrado $x^2$ es una distribución de probabilidad continua definida solo para valores positivos, que surge de la suma de los cuadrados de variables normales estándar independientes, dependiendo de un parámetro llamado grados de libertad $(𝑘)$. Su media es $𝑘$, su varianza $2𝑘$ y su forma varía según $𝑘$: es muy asimétrica para valores pequeños y se aproxima a una normal al crecer. Su función de densidad se expresa mediante la función gamma, y es fundamental en estadística porque se utiliza en pruebas de hipótesis (bondad de ajuste e independencia en tablas de contingencia), en la construcción de intervalos de confianza para varianzas y en la base de otras distribuciones como la t de Student y la F de Fisher. En términos intuitivos, mide la dispersión total al sumar cuadrados de desviaciones de normales, por lo que resulta clave para analizar varianzas y asociaciones entre variables.
@@ -991,6 +993,44 @@ plot_chisq(df = 25, region = chi_c, case = "c")
 ```
 :::
 
+
+**Gráfica interactiva**
+```{r}
+#| warning: false
+#| message: false
+
+x <- seq(0, 20, length.out = 1000)
+
+y <- dchisq(x, df = 5)
+
+plot_ly() %>%
+  add_lines(
+    x = x,
+    y = y,
+    
+    line = list(
+      color = "orange",
+      width = 4
+    ),
+    
+    name = "Ji-cuadrado"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Distribución Ji-cuadrado",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_dark",
+    
+    xaxis = list(title = "x"),
+    
+    yaxis = list(title = "Densidad")
+  )
+```
+
 # . DISTRIBUCIÓN T DE STUDENT
 
 La distribución $t$ de Student es una distribución de probabilidad continua que surge al estimar la media de una población normalmente distribuida cuando el tamaño de la muestra es pequeño y la varianza poblacional es desconocida. Fue introducida en 1908 por William Sealy Gosset bajo el seudónimo de *Student*.
@@ -1199,6 +1239,44 @@ plot_c
 ```
 :::
 
+
+**Gráfica interactiva**
+```{r}
+#| warning: false
+#| message: false
+
+x <- seq(-5, 5, length.out = 1000)
+
+y <- dt(x, df = 10)
+
+plot_ly() %>%
+  add_lines(
+    x = x,
+    y = y,
+    
+    line = list(
+      color = "mediumseagreen",
+      width = 4
+    ),
+    
+    name = "t Student"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Distribución t Student",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_dark",
+    
+    xaxis = list(title = "x"),
+    
+    yaxis = list(title = "Densidad")
+  )
+```
+
 # . DISTRIBUCIÓN F DE FISHER
 
 La distribución $F$, también conocida como $F$ de Fisher-Snedecor, es una distribución de probabilidad continua que surge a partir de la razón entre dos variables aleatorias chi-cuadrado normalizadas por sus grados de libertad.
@@ -1334,6 +1412,77 @@ ggplot(df_plot, aes(x = x, y = y, color = label)) +
   theme_minimal(base_size = 14)
 ```
 
+
+**Gráfica interactiva**
+```{r}
+#| warning: false
+#| message: false
+
+library(plotly)
+
+# =====================================================
+# DISTRIBUCIÓN F DE FISHER
+# =====================================================
+
+# Grados de libertad
+df1 <- 5
+df2 <- 10
+
+# Valores en x
+x <- seq(0, 5, length.out = 1000)
+
+# Densidad F
+y <- df(x, df1 = df1, df2 = df2)
+
+# =====================================================
+# GRÁFICA INTERACTIVA
+# =====================================================
+
+plot_ly() %>%
+  
+  add_lines(
+    
+    x = x,
+    y = y,
+    
+    line = list(
+      color = "violet",
+      width = 4
+    ),
+    
+    name = "F Fisher"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Distribución F de Fisher",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_dark",
+    
+    xaxis = list(
+      title = "Valores de x"
+    ),
+    
+    yaxis = list(
+      title = "Densidad"
+    ),
+    
+    legend = list(
+      orientation = "h",
+      x = 0.35,
+      y = -0.2
+    ),
+    
+    margin = list(
+      t = 80
+    )
+  )
+```
+
+
 # . TEOREMA DEL LÍMITE CENTRAL
 
 El Teorema del Límite Central (TLC) es uno de los conceptos más importantes en estadística. En términos simples, establece que la distribución de la media de una muestra se aproxima a una distribución normal a medida que el tamaño de la muestra aumenta, sin importar la forma de la distribución original de la población.
@@ -1466,3 +1615,308 @@ ggplot(df_medias, aes(x = media)) +
   theme_minimal()
 ```
 :::
+
+**Gráfica interactiva**
+```{r}
+#| warning: false
+#| message: false
+
+library(plotly)
+
+# =====================================================
+# TCL - BINOMIAL
+# =====================================================
+
+set.seed(123)
+
+medias_bin <- replicate(
+  5000,
+  mean(
+    rbinom(
+      30,
+      size = 10,
+      prob = 0.3
+    )
+  )
+)
+
+x_bin <- seq(
+  min(medias_bin),
+  max(medias_bin),
+  length.out = 1000
+)
+
+y_bin <- dnorm(
+  x_bin,
+  mean = mean(medias_bin),
+  sd = sd(medias_bin)
+)
+
+grafica_bin <- plot_ly() %>%
+  
+  add_histogram(
+    x = medias_bin,
+    
+    histnorm = "probability density",
+    
+    nbinsx = 25,
+    
+    marker = list(
+      color = "yellowgreen",
+      
+      line = list(
+        color = "white",
+        width = 1
+      )
+    ),
+    
+    opacity = 0.85,
+    
+    name = "Medias muestrales"
+  ) %>%
+  
+  add_lines(
+    x = x_bin,
+    y = y_bin,
+    
+    line = list(
+      color = "darkblue",
+      width = 4,
+      dash = "dash"
+    ),
+    
+    name = "Curva Normal"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Teorema del Límite Central - Binomial",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_white",
+    
+    bargap = 0.05,
+    
+    margin = list(t = 80),
+    
+    xaxis = list(
+      title = "Media muestral"
+    ),
+    
+    yaxis = list(
+      title = "Densidad"
+    ),
+    
+    legend = list(
+      orientation = "h",
+      x = 0.25,
+      y = -0.2
+    )
+  )
+
+# =====================================================
+# TCL - POISSON
+# =====================================================
+
+medias_pois <- replicate(
+  5000,
+  mean(
+    rpois(
+      30,
+      lambda = 4
+    )
+  )
+)
+
+x_pois <- seq(
+  min(medias_pois),
+  max(medias_pois),
+  length.out = 1000
+)
+
+y_pois <- dnorm(
+  x_pois,
+  mean = mean(medias_pois),
+  sd = sd(medias_pois)
+)
+
+grafica_pois <- plot_ly() %>%
+  
+  add_histogram(
+    x = medias_pois,
+    
+    histnorm = "probability density",
+    
+    nbinsx = 25,
+    
+    marker = list(
+      color = "skyblue",
+      
+      line = list(
+        color = "white",
+        width = 1
+      )
+    ),
+    
+    opacity = 0.85,
+    
+    name = "Medias muestrales"
+  ) %>%
+  
+  add_lines(
+    x = x_pois,
+    y = y_pois,
+    
+    line = list(
+      color = "darkblue",
+      width = 4,
+      dash = "dash"
+    ),
+    
+    name = "Curva Normal"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Teorema del Límite Central - Poisson",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_white",
+    
+    bargap = 0.05,
+    
+    margin = list(t = 80),
+    
+    xaxis = list(
+      title = "Media muestral"
+    ),
+    
+    yaxis = list(
+      title = "Densidad"
+    ),
+    
+    legend = list(
+      orientation = "h",
+      x = 0.25,
+      y = -0.2
+    )
+  )
+
+# =====================================================
+# TCL - HIPERGEOMÉTRICA
+# =====================================================
+
+medias_hiper <- replicate(
+  5000,
+  mean(
+    rhyper(
+      30,
+      m = 300,
+      n = 700,
+      k = 20
+    )
+  )
+)
+
+x_hiper <- seq(
+  min(medias_hiper),
+  max(medias_hiper),
+  length.out = 1000
+)
+
+y_hiper <- dnorm(
+  x_hiper,
+  mean = mean(medias_hiper),
+  sd = sd(medias_hiper)
+)
+
+grafica_hiper <- plot_ly() %>%
+  
+  add_histogram(
+    x = medias_hiper,
+    
+    histnorm = "probability density",
+    
+    nbinsx = 25,
+    
+    marker = list(
+      color = "mediumseagreen",
+      
+      line = list(
+        color = "white",
+        width = 1
+      )
+    ),
+    
+    opacity = 0.85,
+    
+    name = "Medias muestrales"
+  ) %>%
+  
+  add_lines(
+    x = x_hiper,
+    y = y_hiper,
+    
+    line = list(
+      color = "darkblue",
+      width = 4,
+      dash = "dash"
+    ),
+    
+    name = "Curva Normal"
+  ) %>%
+  
+  layout(
+    
+    title = list(
+      text = "Teorema del Límite Central - Hipergeométrica",
+      font = list(size = 24)
+    ),
+    
+    template = "plotly_white",
+    
+    bargap = 0.05,
+    
+    margin = list(t = 80),
+    
+    xaxis = list(
+      title = "Media muestral"
+    ),
+    
+    yaxis = list(
+      title = "Densidad"
+    ),
+    
+    legend = list(
+      orientation = "h",
+      x = 0.25,
+      y = -0.2
+    )
+  )
+
+# =====================================================
+# MOSTRAR GRÁFICAS
+# =====================================================
+
+subplot(
+  grafica_bin,
+  grafica_pois,
+  grafica_hiper,
+  
+  nrows = 3,
+  
+  margin = 0.08,
+  
+  titleY = TRUE,
+  titleX = TRUE
+)
+```
+
+
+
+
+[Ver aplicación interactiva](https://danielabonilla.shinyapps.io/shiny_app//)
