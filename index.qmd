@@ -165,7 +165,7 @@ ipak <- function(pkg){
   )
 }
 
-packages <- c("tidyverse","kableExtra","ggplot2","readxl", "plotly")
+packages <- c("tidyverse","kableExtra","ggplot2","readxl", "plotly", "shiny")
 
 ipak(packages)
 ```
@@ -182,21 +182,21 @@ La distribución normal es la distribución de probabilidad continua más usada 
 
 La distribución normal es un tipo de distribución de probabilidad continua. Esto significa que la variable aleatoria puede tomar cualquier valor dentro de un rango determinado. Se representa por una curva simétrica en forma de campana, donde la mayor parte de los datos se agrupan alrededor del valor central.
 
--   *Forma de Campana:* La distribución es simétrica alrededor de su media, creando una curva con forma de campana. El punto más alto de la campana es la media.
+-   **Forma de Campana:** La distribución es simétrica alrededor de su media, creando una curva con forma de campana. El punto más alto de la campana es la media.
 
--   *Media, Mediana y Moda Coincidentes:* En una distribución normal perfecta, estos tres valores son iguales y se encuentran en el centro de la curva.
+-   **Media, Mediana y Moda Coincidentes:** En una distribución normal perfecta, estos tres valores son iguales y se encuentran en el centro de la curva.
 
--   *Asintótica al Eje Horizontal:* La curva se extiende indefinidamente en ambas direcciones, acercándose al eje x pero sin llegar a tocarlo.
+-   **Asintótica al Eje Horizontal:** La curva se extiende indefinidamente en ambas direcciones, acercándose al eje x pero sin llegar a tocarlo.
 
--   *Regla Empírica:* Alrededor del 68% de los datos se encuentran dentro de una desviación estándar de la media $(μ±σ)$, el 95% dentro de dos desviaciones estándar $(μ±2σ)$, y el 99.7% dentro de tres desviaciones estándar $(μ±3σ)$.
+-   **Regla Empírica:** Alrededor del 68% de los datos se encuentran dentro de una desviación estándar de la media $(μ±σ)$, el 95% dentro de dos desviaciones estándar $(μ±2σ)$, y el 99.7% dentro de tres desviaciones estándar $(μ±3σ)$.
 
 ***Parámetros***
 
 La distribución normal está completamente definida por dos parámetros:
 
--   *Media (μ):*Indica la ubicación del centro de la curva y el valor más probable.
+-   **Media (μ):** Indica la ubicación del centro de la curva y el valor más probable.
 
--   *Varianza* $(σ^2)$ o Desviación Estándar $(σ)$: Mide la dispersión o variabilidad de los datos. Una σ grande resulta en una curva más ancha y aplanada, mientras que una σ pequeña crea una curva más estrecha y alta.
+-   **Varianza** $(σ^2)$ o Desviación Estándar $(σ)$: Mide la dispersión o variabilidad de los datos. Una σ grande resulta en una curva más ancha y aplanada, mientras que una σ pequeña crea una curva más estrecha y alta.
 
 ***Fórmulas***
 
@@ -220,7 +220,7 @@ $π$: es la constante pi (aproximadamente 3.14159).
 
 Para calcular probabilidades, se utiliza la distribución normal estándar, que tiene una media de 0 y una desviación estándar de 1. Cualquier variable normal puede estandarizarse usando la siguiente fórmula:
 
-Fórmula de Estandarización (puntuación $Z$):
+*Fórmula de Estandarización (puntuación $Z$):*
 
 $$Z = \frac{x - \mu}{\sigma}$$
 
@@ -427,7 +427,7 @@ cat("c)", round(vasos_derramados), "vasos\n")
 
 Si se utilizan vasos de 230 mililitros para las siguientes 1000 bebidas probablemente se derramarán 23 vasos.
 
-**Gráficas**
+**Gráfica**
 
 ```{r}
 rango <- c(media - 3 * desviacion_estandar, media + 3 * desviacion_estandar)
@@ -531,7 +531,7 @@ cat("c)", round(prob_c, 4), "\n")
 
 La probabilidad de que se pierda el café es de 0.4051.
 
-**Gráficas**
+**Gráfica**
 
 ```{r}
 rango <- c(media - 3 * desviacion, media + 3 * desviacion)
@@ -757,6 +757,7 @@ plot_ly() %>%
   )
 ```
 
+<br>
 
 # . DISTRIBUCIÓN JI - CUADRADO
 
@@ -766,35 +767,35 @@ La distribución ji-cuadrado $x^2$ es una distribución de probabilidad continua
 
 A diferencia de la distribución normal, la distribución ji cuadrado no está definida por una media y una desviación estándar, sino por un único parámetro:
 
--   *Grados de libertad* $(v o df)$: Este parámetro determina la forma de la distribución. A medida que los grados de libertad aumentan, la forma de la distribución se vuelve más simétrica y se aproxima a una distribución normal.
+-   **Grados de libertad** $(v o df)$: Este parámetro determina la forma de la distribución. A medida que los grados de libertad aumentan, la forma de la distribución se vuelve más simétrica y se aproxima a una distribución normal.
 
--   *Valores No Negativos:* La variable ji cuadrado $x^2$ solo puede tomar valores positivos, ya que se calcula a partir de la suma de cuadrados. Por lo tanto, su curva comienza en cero y se extiende hacia la derecha.
+-   **Valores No Negativos:** La variable ji cuadrado $x^2$ solo puede tomar valores positivos, ya que se calcula a partir de la suma de cuadrados. Por lo tanto, su curva comienza en cero y se extiende hacia la derecha.
 
--   *Asimétrica a la Derecha:* La distribución es asimétrica con una cola larga hacia la derecha.
+-   **Asimétrica a la Derecha:** La distribución es asimétrica con una cola larga hacia la derecha.
 
--   *Media y Varianza:* La media de la distribución es igual a los grados de libertad $(μ=v)$, y la varianza es el doble de los grados de libertad $(σ^2=2v).$
+-   **Media y Varianza:** La media de la distribución es igual a los grados de libertad $(μ=v)$, y la varianza es el doble de los grados de libertad $(σ^2=2v).$
 
--   *Dominio:* $𝑋≥0$ (nunca toma valores negativos).
+-   **Dominio:** $𝑋≥0$ (nunca toma valores negativos).
 
--   *Función de densidad de probabilidad*
+-   **Función de densidad de probabilidad**
 
 $$f(x;k) = \frac{1}{2^{k/2} \Gamma(k/2)} x^{k/2 - 1} e^{-x/2}, \quad x > 0$$
 
--   *Usos principales en la estadística*
+-   **Usos principales en la estadística**
 
 La $x^2$ es fundamental en estadística inferencial. Algunos de sus usos:
 
-**Pruebas de hipótesis:**
+***Pruebas de hipótesis:***
 
 1.  Chi-cuadrado de bondad de ajuste: verificar si los datos observados se ajustan a una distribución teórica.
 
 2.  Chi-cuadrado de independencia: evaluar si dos variables categóricas son independientes en una tabla de contingencia.
 
--   ¨*Intervalos de confianza:* para la varianza poblacional de una normal, ya que está relacionada con la suma de cuadrados de normales.
+-   **Intervalos de confianza:** para la varianza poblacional de una normal, ya que está relacionada con la suma de cuadrados de normales.
 
--   *Modelos más complejos:* forma parte de la familia de distribuciones asociadas a la F de Fisher y la t de Student, que también dependen de $x^2$
+-   **Modelos más complejos:** forma parte de la familia de distribuciones asociadas a la F de Fisher y la t de Student, que también dependen de $x^2$
 
-**Familias de Curvas Chi Cuadrado**
+***Familias de Curvas Chi Cuadrado***
 
 ```{r}
 k_vals <- c(4, 5, 10)
@@ -932,7 +933,7 @@ b.  $P(X^2>χ^2α)=0.025$ cuando 4v=19\$;
 
 c.  $P(37.652<X^2<χ^2α)=0.045$ cuando $v=25$.
 
-**Solución**
+**Solución de incisos**
 
 ::: panel-tabset
 ## INCISO A
@@ -1031,6 +1032,8 @@ plot_ly() %>%
   )
 ```
 
+<br>
+
 # . DISTRIBUCIÓN T DE STUDENT
 
 La distribución $t$ de Student es una distribución de probabilidad continua que surge al estimar la media de una población normalmente distribuida cuando el tamaño de la muestra es pequeño y la varianza poblacional es desconocida. Fue introducida en 1908 por William Sealy Gosset bajo el seudónimo de *Student*.
@@ -1039,17 +1042,17 @@ Matemáticamente, si $Z$ es una variable aleatoria con distribución normal est�
 
 $$T = \frac{Z}{\sqrt{V/\nu}}$$ sigue una distribución $t$ de Student con $v$ grados de libertad.
 
-**Principales características:**
+***Principales características:***
 
--   *Forma:* es simétrica respecto al cero, similar a la normal estándar, pero con colas más pesadas (mayor probabilidad en los extremos).
+-   **Forma:** es simétrica respecto al cero, similar a la normal estándar, pero con colas más pesadas (mayor probabilidad en los extremos).
 
--   *Parámetro:* depende de los grados de libertad $(vv)$; a mayor $vv$, la distribución se aproxima a la normal estándar $N(0,1)$.
+-   **Parámetro:** depende de los grados de libertad $(vv)$; a mayor $vv$, la distribución se aproxima a la normal estándar $N(0,1)$.
 
--   *Media:* $0$ (para $v>1v > 1$).
+-   **Media:** $0$ (para $v>1v > 1$).
 
--   *Varianza:* $\frac{v}{v - 2} \quad \text{para } v > 2$
+-   **Varianza:** $\frac{v}{v - 2} \quad \text{para } v > 2$
 
-**Usos principales**
+***Usos principales***
 
 -   Pruebas de hipótesis sobre medias (prueba $t$ de Student)
 
@@ -1057,7 +1060,7 @@ $$T = \frac{Z}{\sqrt{V/\nu}}$$ sigue una distribución $t$ de Student con $v$ gr
 
 -   Modelar incertidumbre en muestras pequeñas
 
-**Familia de Curvas para T de Student**
+***Familia de Curvas para T de Student***
 
 ```{r}
 set.seed(123)
@@ -1082,7 +1085,7 @@ c.  Encuentre $P(−1.356<T<2.179)$ cuando $v=12$.
 
 d.  Encuentre $P(T>−2.567)$ cuando $v=17$.
 
-**Solución a los incisos**
+**Solución de los incisos**
 
 ::: panel-tabset
 ## INCISO A
@@ -1277,41 +1280,45 @@ plot_ly() %>%
   )
 ```
 
+<br>
+
 # . DISTRIBUCIÓN F DE FISHER
 
 La distribución $F$, también conocida como $F$ de Fisher-Snedecor, es una distribución de probabilidad continua que surge a partir de la razón entre dos variables aleatorias chi-cuadrado normalizadas por sus grados de libertad.
 
-*Definición formal*
+***Definición formal***
 
 Si: \* $X∼χ^2v_1$ (una chi-cuadrado con $v_1$ grados de libertad), \* $Y∼χ^2v_2$ (otra chi-cuadrado con $v_2$ grados de libertad), y $X$ y $Y$ son independientes, entonces la variable:
 
 $$F = \frac{X/v_1}{Y/v_2}$$ sigue una distribución F con $(v_1, v_2)$ grados de libertad.
 
-**Propiedades principales**
+***Propiedades principales***
 
-1.  Soporte: $F>0$, es decir, solo toma valores positivos.
+1.  **Soporte:** $F>0$, es decir, solo toma valores positivos.
 
-2.  Asimétrica: la curva de densidad es sesgada a la derecha, especialmente para pocos grados de libertad.
+2.  **Asimétrica:** la curva de densidad es sesgada a la derecha, especialmente para pocos grados de libertad.
 
-3.  Esperanza matemática:
+3.  **Esperanza matemática:**
 
 $$E(F) = \frac{v_2}{v_2 - 2}, \quad \text{para } v_2 > 2$$
 
-4.  Varianza:
+4.  **Varianza:**
 
 $$Var(F) = \frac{2v_2^2(v_1 + v_2 - 2)}{v_1(v_2 - 2)^2(v_2 - 4)}, \quad \text{para } v_2 > 4$$
 
 5.  Cuando los grados de libertad son grandes, la distribución F tiende a concentrarse cerca de 1.
 
-**Usos más comunes**
+***Usos más comunes***
 
-1.  Análisis de Varianza (ANOVA): se utiliza para contrastar si varias medias poblacionales son iguales.
+1. **Análisis de Varianza (ANOVA):** se utiliza para contrastar si varias medias poblacionales son iguales.
 
-2.  Pruebas de hipótesis sobre varianzas: por ejemplo, para comparar si dos poblaciones tienen varianzas iguales.
+2.  **Pruebas de hipótesis sobre varianzas:** por ejemplo, para comparar si dos poblaciones tienen varianzas iguales.
 
-3.  Regresión lineal: la prueba F sirve para evaluar la significancia global del modelo.
+3.  **Regresión lineal:** la prueba F sirve para evaluar la significancia global del modelo.
 
-**Familia de Curvas F de Fisher**
+<br>
+
+***Familia de Curvas F de Fisher***
 
 ```{r}
 x <- seq(0, 5, length.out = 500)
@@ -1335,6 +1342,8 @@ ggplot(df, aes(x = x, y = y, color = label)) +
        color = "Grados de libertad") +
   theme_minimal(base_size = 14)
 ```
+
+<br>
 
 ***Ejercicio***
 
@@ -1420,9 +1429,8 @@ ggplot(df_plot, aes(x = x, y = y, color = label)) +
 
 library(plotly)
 
-# =====================================================
 # DISTRIBUCIÓN F DE FISHER
-# =====================================================
+
 
 # Grados de libertad
 df1 <- 5
@@ -1434,9 +1442,8 @@ x <- seq(0, 5, length.out = 1000)
 # Densidad F
 y <- df(x, df1 = df1, df2 = df2)
 
-# =====================================================
 # GRÁFICA INTERACTIVA
-# =====================================================
+
 
 plot_ly() %>%
   
@@ -1482,38 +1489,39 @@ plot_ly() %>%
   )
 ```
 
+<br>
 
 # . TEOREMA DEL LÍMITE CENTRAL
 
 El Teorema del Límite Central (TLC) es uno de los conceptos más importantes en estadística. En términos simples, establece que la distribución de la media de una muestra se aproxima a una distribución normal a medida que el tamaño de la muestra aumenta, sin importar la forma de la distribución original de la población.
 
-**Concepto y Analogía**
+***Concepto y Analogía***
 
 Imagina que tienes una población con una distribución extraña, por ejemplo, muy sesgada. Si tomas una sola muestra grande de esa población y calculas su media, esa media se comportará de manera predecible. Si repites este proceso muchas veces, las medias de todas esas muestras formarán un histograma que se parecerá cada vez más a una curva de campana (la distribución normal).
 
 Una analogía popular es la de los dados. La distribución de probabilidad de un solo dado es uniforme (cada número tiene la misma probabilidad). Sin embargo, si lanzas muchos dados y sumas sus resultados, la distribución de esas sumas se aproximará a una campana, con los resultados centrales (la media) siendo mucho más probables que los extremos.
 
-**Puntos Clave del Teorema**
+***Puntos Clave del Teorema***
 
-1.  *Forma de la Distribución de Muestreo:* La distribución de las medias de la muestra se vuelve normal, sin importar si la población original era normal, sesgada, uniforme o de cualquier otra forma.
+1.  **Forma de la Distribución de Muestreo:** La distribución de las medias de la muestra se vuelve normal, sin importar si la población original era normal, sesgada, uniforme o de cualquier otra forma.
 
-2.  *Tamaño de la Muestra* $(n)$: La aproximación a la normalidad es más precisa a medida que el tamaño de la muestra $(n)$ aumenta. Generalmente, una muestra de $n≥30$ es considerada suficiente para que la aproximación sea válida.
+2.  **Tamaño de la Muestra $(n)$:** La aproximación a la normalidad es más precisa a medida que el tamaño de la muestra $(n)$ aumenta. Generalmente, una muestra de $n≥30$ es considerada suficiente para que la aproximación sea válida.
 
-3.  *Relación con la Media de la Población:* La media de la distribución de muestreo de las medias $(\mu_{\bar{x}})$ es igual a la media de la población $(μ)$.
+3.  **Relación con la Media de la Población:** La media de la distribución de muestreo de las medias $(\mu_{\bar{x}})$ es igual a la media de la población $(μ)$.
 
 $$(\mu_{\bar{x}})= μ$$
 
-4.  *Relación con la Desviación Estándar de la Población:* La desviación estándar de la distribución de muestreo de las medias, llamada error estándar ($\sigma_{\bar{x}}$), es igual a la desviación estándar de la población $(σ)$ dividida por la raíz cuadrada del tamaño de la muestra $(n)$.
+4.  **Relación con la Desviación Estándar de la Población:** La desviación estándar de la distribución de muestreo de las medias, llamada error estándar ($\sigma_{\bar{x}}$), es igual a la desviación estándar de la población $(σ)$ dividida por la raíz cuadrada del tamaño de la muestra $(n)$.
 
 $$\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$$
 
 Esto significa que, a medida que el tamaño de la muestra aumenta, el error estándar disminuye, y las medias de las muestras se agrupan más estrechamente alrededor de la media de la población.
 
-**Importancia**
+***Importancia***
 
 El Teorema del Límite Central es fundamental porque permite utilizar la distribución normal (que es fácil de trabajar) para hacer inferencias sobre la media de la población, incluso cuando no se conoce la distribución de la población original. Esto es la base para muchas pruebas estadísticas, como los intervalos de confianza y las pruebas de hipótesis.
 
-**Simulación para las Distribuciones**
+***Simulación para las Distribuciones***
 
 ::: panel-tabset
 ## D. BINOMIAL ORIGINAL
@@ -1623,9 +1631,8 @@ ggplot(df_medias, aes(x = media)) +
 
 library(plotly)
 
-# =====================================================
 # TCL - BINOMIAL
-# =====================================================
+
 
 set.seed(123)
 
@@ -1716,9 +1723,8 @@ grafica_bin <- plot_ly() %>%
     )
   )
 
-# =====================================================
+
 # TCL - POISSON
-# =====================================================
 
 medias_pois <- replicate(
   5000,
@@ -1806,9 +1812,8 @@ grafica_pois <- plot_ly() %>%
     )
   )
 
-# =====================================================
+
 # TCL - HIPERGEOMÉTRICA
-# =====================================================
 
 medias_hiper <- replicate(
   5000,
@@ -1898,9 +1903,7 @@ grafica_hiper <- plot_ly() %>%
     )
   )
 
-# =====================================================
 # MOSTRAR GRÁFICAS
-# =====================================================
 
 subplot(
   grafica_bin,
@@ -1917,6 +1920,7 @@ subplot(
 ```
 
 
+<br>
 
 
 [Ver aplicación interactiva](https://danielabonilla.shinyapps.io/shiny_app//)
